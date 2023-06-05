@@ -1,11 +1,9 @@
 package com.fiap.global.controller;
 
-import com.fiap.global.repository.ColetaRepository;
 import com.fiap.global.request.ColetaDTO;
 import com.fiap.global.service.ColetaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,7 +27,7 @@ public class ColetaController {
     }
 
     @PostMapping
-    public ResponseEntity postColeta(@RequestBody ColetaDTO coletaDTO) throws ChangeSetPersister.NotFoundException {
+    public ResponseEntity postColeta(@RequestBody ColetaDTO coletaDTO) throws Exception {
         return ResponseEntity.status(HttpStatus.CREATED).body(coletaService.salvar(coletaDTO));
     }
 

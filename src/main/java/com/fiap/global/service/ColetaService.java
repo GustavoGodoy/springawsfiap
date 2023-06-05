@@ -36,11 +36,14 @@ public class ColetaService {
         return coletasResponse;
     }
 
-    public Coleta salvar(ColetaDTO coletaDTO) throws ChangeSetPersister.NotFoundException {
+    public Coleta salvar(ColetaDTO coletaDTO) throws Exception {
 
         var user = usuarioRepository.findByLogin(coletaDTO.getUsuario());
 
-        if (user.isEmpty()) throw new ChangeSetPersister.NotFoundException();
+        if (user.isEmpty()) {
+            System.err.println("Usuario não encontrado");
+            throw new Exception("User not found");
+        }
 
        return coletaRepository.save(new Coleta(user.get(), coletaDTO.getAlimento(), coletaDTO.getData()));
     }
