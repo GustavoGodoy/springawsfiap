@@ -38,6 +38,8 @@ public class ColetaService {
 
     public Coleta salvar(ColetaDTO coletaDTO) throws Exception {
 
+        System.out.println(coletaDTO.getUsuario());
+
         var user = usuarioRepository.findByLogin(coletaDTO.getUsuario());
 
         if (user.isEmpty()) {
