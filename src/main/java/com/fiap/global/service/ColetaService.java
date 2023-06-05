@@ -43,8 +43,8 @@ public class ColetaService {
         var user = usuarioRepository.findByLogin(coletaDTO.getUsuario());
 
         if (user.isEmpty()) {
-            System.err.println("Usuario não encontrado");
-            throw new Exception("User not found");
+            System.err.println("Usuario não encontrado" + coletaDTO.getUsuario());
+            throw new Exception("User not found" + coletaDTO.getUsuario());
         }
 
        return coletaRepository.save(new Coleta(user.get(), coletaDTO.getAlimento(), coletaDTO.getData()));
